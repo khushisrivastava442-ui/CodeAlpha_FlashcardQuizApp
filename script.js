@@ -40,3 +40,50 @@ function previousCard() {
 }
 
 showCard();
+function addFlashcard() {
+    const question = document.getElementById("newQuestion").value;
+    const answer = document.getElementById("newAnswer").value;
+
+    if (question !== "" && answer !== "") {
+        flashcards.push({
+            question: question,
+            answer: answer
+        });
+
+        alert("Flashcard Added!");
+
+        document.getElementById("newQuestion").value = "";
+        document.getElementById("newAnswer").value = "";
+    }
+}
+
+function editFlashcard() {
+    const question = document.getElementById("newQuestion").value;
+    const answer = document.getElementById("newAnswer").value;
+
+    if (question !== "" && answer !== "") {
+        flashcards[current].question = question;
+        flashcards[current].answer = answer;
+
+        showCard();
+
+        alert("Flashcard Updated!");
+    }
+}
+
+function deleteFlashcard() {
+
+    if (flashcards.length > 1) {
+
+        flashcards.splice(current, 1);
+
+        current = 0;
+
+        showCard();
+
+        alert("Flashcard Deleted!");
+    } else {
+
+        alert("At least one flashcard is required.");
+    }
+        }
